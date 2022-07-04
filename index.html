@@ -14,7 +14,94 @@
     <title>Weather App</title>
   </head>
   <body>
-    <h1>Weather app</h1>
+    <div class="container">
+      <div class="weather-app">
+        <form class="search-form" id="search-form">
+          <div class="row">
+            <div class="col-6">
+              <input
+                type="search"
+                placeholder="Type a city.."
+                autofocus="on"
+                autocomplete="off"
+                class="form-control shadow-sm"
+                id="input-value"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Search"
+                class="form-control btn btn-primary shadow-sm"
+                id="search-btn"
+              />
+            </div>
+            <div class="col-3">
+              <input
+                type="submit"
+                value="Current"
+                class="form-control btn btn-warning shadow-sm"
+                id="current-btn"
+              />
+            </div>
+          </div>
+        </form>
+        <h1>Sydney</h1>
+        <ul>
+          <li id="date">Wednesday 22:00</li>
+        </ul>
+        <div class="row">
+          <div class="col-6">
+            <div class="clearfix">
+              <div class="float-left">
+                <span class="temperature" id="degrees">19</span>
+                <span class="units">
+                  <a href="#" id="celsium">°C</a> |
+                  <a href="#" id="faringate">°F</a>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <ul>
+              <li>Humidity: <span id="humid">77</span>%</li>
+              <li>Wind: <span id="wind">8 </span>km/h</li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card smallcard border-warning mb-3 col-sm-3">
+            <h6>Tuesday</h6>
+            <p class="card-text">🌞 27 °C</p>
+          </div>
+          <div class="card smallcard border-warning mb-3 col-sm-3">
+            <h6>Wednesday</h6>
+            <p class="card-text">🌧 20 °C</p>
+          </div>
+          <div class="card smallcard border-warning mb-3 col-sm-3">
+            <h6>Thursday</h6>
+            <p class="card-text">☁ 21 °C</p>
+          </div>
+          <div class="card smallcard border-warning mb-3 col-sm-3">
+            <h6>Friday</h6>
+            <p class="card-text">⛅ 27 °C</p>
+          </div>
+          <div class="card smallcard border-warning mb-3 col-sm-3">
+            <h6>Saturday</h6>
+            <p class="card-text">🌞 31 °C</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <p class="footer">
+        <a href="https://github.com/yolizon/homework-6" target="_blank"
+          >Open-source code</a
+        >
+        by Lisa Kovalenko
+      </p>
+    </div>
+
     <script src="src/index.js"></script>
   </body>
 </html>
