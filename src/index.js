@@ -1,6 +1,5 @@
-let currDate = new Date();
-function changeTime() {
-  let date = document.querySelector("#date");
+function changeTime(timestamp) {
+  let currDate = new Date(timestamp);
   let days = [
     "Sunday",
     "Monday",
@@ -13,15 +12,16 @@ function changeTime() {
   let day = days[currDate.getDay()];
   let hour = currDate.getHours();
   let minutes = currDate.getMinutes();
-  if (minutes < 10) {
-    return (date.innerHTML = `${day} ${hour}:0${minutes}`);
-  } else if (hour < 10) {
-    return (date.innerHTML = `${day} 0${hour}:${minutes}`);
-  } else {
-    return (date.innerHTML = `${day} ${hour}:${minutes}`);
+  if (hour < 10) {
+    hour = `0${hour}`;
   }
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${day} ${hour}:${minutes}`;
 }
-changeTime();
 
 function displayWeather(event) {
   event.preventDefault();
@@ -39,13 +39,15 @@ function showWeather(response) {
   let windApi = Math.round(response.data.wind.speed);
   let h1 = document.querySelector("h1");
   let city = response.data.name;
-
-  return (
-    (degrees.innerHTML = `${temperature}`),
-    (humidity.innerHTML = `${humidityApi}`),
-    (wind.innerHTML = `${windApi}`),
-    (h1.innerHTML = `${city}`)
-  );
+  let description = document.querySelector("#description");
+  let descriptionApi = response.data.weather[0].description;
+  let date = document.querySelector("#date");
+  date.innerHTML = changeTime(response.data.dt * 1000);
+  degrees.innerHTML = `${temperature}`;
+  humidity.innerHTML = `${humidityApi}`;
+  wind.innerHTML = `${windApi}`;
+  h1.innerHTML = `${city}`;
+  description.innerHTML = `${descriptionApi}`;
 }
 function showCity() {
   let city = document.querySelector("#input-value").value;

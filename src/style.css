@@ -23,9 +23,15 @@ li {
   line-height: 1;
   list-style: none;
 }
+li:first-letter {
+  text-transform: capitalize;
+}
 h6 {
   text-align: center;
   font-size: 12px;
+}
+.right-li li {
+  text-transform: none;
 }
 .weather-app {
   border: 1px solid #dadde1;
