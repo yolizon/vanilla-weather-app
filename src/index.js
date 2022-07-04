@@ -70,6 +70,7 @@ function displayCurrentWeather(position) {
 function currentGeolocation() {
   navigator.geolocation.getCurrentPosition(displayCurrentWeather);
 }
+navigator.geolocation.getCurrentPosition(displayCurrentWeather);
 let currentBtn = document.querySelector("#current-btn");
 currentBtn.addEventListener("click", currentGeolocation);
 
