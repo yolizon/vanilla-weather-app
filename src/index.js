@@ -39,6 +39,7 @@ function showWeather(response) {
   let windApi = Math.round(response.data.wind.speed);
   let h1 = document.querySelector("h1");
   let city = response.data.name;
+
   return (
     (degrees.innerHTML = `${temperature}`),
     (humidity.innerHTML = `${humidityApi}`),

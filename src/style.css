@@ -40,7 +40,10 @@ h6 {
   width: 64px;
   margin-right: 10px;
 }
-
+.weather-clear img {
+  margin-right: 5px;
+  margin-bottom: 25px;
+}
 .temperature {
   color: rgb(33, 33, 33);
   font-size: 64px;
