@@ -31,7 +31,6 @@ function displayWeather(event) {
   axios.get(urlCity).then(showWeather);
 }
 function showWeather(response) {
-  console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let degrees = document.querySelector("#degrees");
   let humidity = document.querySelector("#humid");
@@ -56,17 +55,11 @@ function showWeather(response) {
   h1.innerHTML = `${city}`;
   description.innerHTML = `${descriptionApi}`;
 }
-function showCity() {
-  let city = document.querySelector("#input-value").value;
-  let h1 = document.querySelector("h1");
-  return (h1.innerHTML = `${city}`);
-}
+
 let searchBtn = document.querySelector("#search-btn");
 let updateWeather = document.querySelector("#search-form");
 updateWeather.addEventListener("submit", displayWeather);
-updateWeather.addEventListener("submit", showCity);
 searchBtn.addEventListener("click", displayWeather);
-searchBtn.addEventListener("click", showCity);
 
 //2
 
