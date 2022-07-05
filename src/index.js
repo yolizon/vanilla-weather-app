@@ -31,7 +31,8 @@ function displayWeather(event) {
   axios.get(urlCity).then(showWeather);
 }
 function showWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  let temperature = Math.round(celsiusTemperature);
   let degrees = document.querySelector("#degrees");
   let humidity = document.querySelector("#humid");
   let wind = document.querySelector("#wind");
@@ -77,17 +78,23 @@ navigator.geolocation.getCurrentPosition(displayCurrentWeather);
 let currentBtn = document.querySelector("#current-btn");
 currentBtn.addEventListener("click", currentGeolocation);
 
-function changeDegreesFaringate(event) {
+let celsiusTemperature = null;
+function changeDegreesFahrenheit(event) {
   event.preventDefault();
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
   let degrees = document.querySelector("#degrees");
-  return (degrees.innerHTML = "66");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  degrees.innerHTML = Math.round(fahrenheitTemperature);
 }
-let faringate = document.querySelector("#faringate");
-faringate.addEventListener("click", changeDegreesFaringate);
-function changeDegreesCelsium(event) {
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", changeDegreesFahrenheit);
+function changeDegreesCelsius(event) {
   event.preventDefault();
+  fahrenheit.classList.remove("active");
+  celsius.classList.add("active");
   let degrees = document.querySelector("#degrees");
-  return (degrees.innerHTML = "19");
+  degrees.innerHTML = Math.round(celsiusTemperature);
 }
-let celsium = document.querySelector("#celsium");
-celsium.addEventListener("click", changeDegreesCelsium);
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", changeDegreesCelsius);

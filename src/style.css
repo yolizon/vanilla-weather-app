@@ -76,3 +76,10 @@ h6 {
   padding: 10px 10px;
   margin-left: 23px;
 }
+.weather-clear .active {
+  color: black;
+  cursor: default;
+}
+.weather-clear .active:hover {
+  text-decoration: none;
+}
