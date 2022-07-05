@@ -31,6 +31,7 @@ function displayWeather(event) {
   axios.get(urlCity).then(showWeather);
 }
 function showWeather(response) {
+  console.log(response);
   let temperature = Math.round(response.data.main.temp);
   let degrees = document.querySelector("#degrees");
   let humidity = document.querySelector("#humid");
@@ -42,6 +43,12 @@ function showWeather(response) {
   let description = document.querySelector("#description");
   let descriptionApi = response.data.weather[0].description;
   let date = document.querySelector("#date");
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  icon.setAttribute("alt", response.data.weather[0].description);
   date.innerHTML = changeTime(response.data.dt * 1000);
   degrees.innerHTML = `${temperature}`;
   humidity.innerHTML = `${humidityApi}`;
