@@ -15,14 +15,11 @@ function changeTime(timestamp) {
   if (hour < 10) {
     hour = `0${hour}`;
   }
-
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   return `${day} ${hour}:${minutes}`;
 }
-
 function displayWeather(event) {
   event.preventDefault();
   let keyApi = "77561646d69cf25aabfe000041044736";
@@ -56,13 +53,10 @@ function showWeather(response) {
   h1.innerHTML = `${city}`;
   description.innerHTML = `${descriptionApi}`;
 }
-
 let searchBtn = document.querySelector("#search-btn");
 let updateWeather = document.querySelector("#search-form");
 updateWeather.addEventListener("submit", displayWeather);
 searchBtn.addEventListener("click", displayWeather);
-
-//2
 
 function displayCurrentWeather(position) {
   let apiKey = "77561646d69cf25aabfe000041044736";
