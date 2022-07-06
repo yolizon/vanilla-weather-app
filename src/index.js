@@ -26,8 +26,8 @@ function formatDay(timestamp) {
   let day = days[date.getDay()];
   return day;
 }
-function displayForecast(response) {
-  let forecast = response.data.daily;
+function displayForecast() {
+  // let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = `<div class="row">`;
 
@@ -67,7 +67,10 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   let apiKey = "77561646d69cf25aabfe000041044736";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(displayForecast);
+  axios.get(apiUrl).then((response) => {
+    forecast = response.data.daily;
+    displayForecast();
+  });
 }
 
 function displayWeather(event) {
@@ -127,22 +130,43 @@ let currentBtn = document.querySelector("#current-btn");
 currentBtn.addEventListener("click", currentGeolocation);
 
 let celsiusTemperature = null;
-function changeDegreesFahrenheit(event) {
-  event.preventDefault();
+let forecast = null;
+function getFahrenheit(celsiusTemp) {
   celsius.classList.remove("active");
   fahrenheit.classList.add("active");
+  fahrenheitTemperature = Math.round((celsiusTemp * 9) / 5 + 32);
+  return fahrenheitTemperature;
+}
+function changeDegreesFahrenheit(event) {
+  event.preventDefault();
   let degrees = document.querySelector("#degrees");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  degrees.innerHTML = Math.round(fahrenheitTemperature);
+  let forecastFahrenheitMax = document.querySelectorAll(
+    ".weather-forecast-temperature-max"
+  );
+  let forecastFahrenheitMin = document.querySelectorAll(
+    ".weather-forecast-temperature-min"
+  );
+  forecastFahrenheitMax.forEach((temp) => {
+    temp.innerHTML = getFahrenheit(temp.innerHTML);
+  });
+  forecastFahrenheitMin.forEach((temp) => {
+    temp.innerHTML = getFahrenheit(temp.innerHTML);
+  });
+  degrees.innerHTML = getFahrenheit(celsiusTemperature);
 }
 let fahrenheit = document.querySelector("#fahrenheit");
 fahrenheit.addEventListener("click", changeDegreesFahrenheit);
-function changeDegreesCelsius(event) {
-  event.preventDefault();
+function getCelcius(celsiusTemp) {
   fahrenheit.classList.remove("active");
   celsius.classList.add("active");
-  let degrees = document.querySelector("#degrees");
-  degrees.innerHTML = Math.round(celsiusTemperature);
+  return Math.round(celsiusTemp);
 }
+function changeDegreesCelsius(event) {
+  event.preventDefault();
+  let degrees = document.querySelector("#degrees");
+  degrees.innerHTML = getCelcius(celsiusTemperature);
+  displayForecast();
+}
+
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", changeDegreesCelsius);
