@@ -20,6 +20,34 @@ function changeTime(timestamp) {
   }
   return `${day} ${hour}:${minutes}`;
 }
+function displayForecast() {
+  let forecast = document.querySelector("#forecast");
+  let forecastHtml = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+            
+            <div class="col-2">
+              <div class="weather-forecast-date">${day}</div>
+              <img
+                src="http://openweathermap.org/img/wn/50d@2x.png"
+                alt=""
+                width="45"
+              />
+              <div class="weather-forecast-temperatures">
+                <span class="weather-forecast-temperature-max"> 18° </span>
+                <span class="weather-forecast-temperature-min"> 12° </span>
+              </div>
+            </div>
+
+          `;
+  });
+  forecastHtml = forecastHtml + `</div>`;
+  forecast.innerHTML = forecastHtml;
+}
+displayForecast();
 function displayWeather(event) {
   event.preventDefault();
   let keyApi = "77561646d69cf25aabfe000041044736";

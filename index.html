@@ -19,7 +19,7 @@
       <div class="weather-app">
         <form class="search-form" id="search-form">
           <div class="row">
-            <div class="col-6">
+            <div class="col-7">
               <input
                 type="search"
                 placeholder="Type a city.."
@@ -33,15 +33,15 @@
               <input
                 type="submit"
                 value="Search"
-                class="form-control btn btn-primary shadow-sm"
+                class="form-control btn btn-outline-primary shadow-sm"
                 id="search-btn"
               />
             </div>
-            <div class="col-3">
+            <div class="col-2">
               <input
                 type="submit"
-                value="Current"
-                class="form-control btn btn-warning shadow-sm"
+                value="📍"
+                class="form-control btn btn-outline-danger shadow-sm"
                 id="current-btn"
               />
             </div>
@@ -72,28 +72,7 @@
             </ul>
           </div>
         </div>
-        <div class="row">
-          <div class="card smallcard border-warning mb-3 col-sm-3">
-            <h6>Tuesday</h6>
-            <p class="card-text">🌞 27 °C</p>
-          </div>
-          <div class="card smallcard border-warning mb-3 col-sm-3">
-            <h6>Wednesday</h6>
-            <p class="card-text">🌧 20 °C</p>
-          </div>
-          <div class="card smallcard border-warning mb-3 col-sm-3">
-            <h6>Thursday</h6>
-            <p class="card-text">☁ 21 °C</p>
-          </div>
-          <div class="card smallcard border-warning mb-3 col-sm-3">
-            <h6>Friday</h6>
-            <p class="card-text">⛅ 27 °C</p>
-          </div>
-          <div class="card smallcard border-warning mb-3 col-sm-3">
-            <h6>Saturday</h6>
-            <p class="card-text">🌞 31 °C</p>
-          </div>
-        </div>
+        <div class="weather-forecast" id="forecast"></div>
       </div>
     </div>
     <div class="footer">
