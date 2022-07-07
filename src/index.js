@@ -146,12 +146,12 @@ function changeDegreesFahrenheit(event) {
   let forecastFahrenheitMin = document.querySelectorAll(
     ".weather-forecast-temperature-min"
   );
-  forecastFahrenheitMax.forEach((temp) => {
-    temp.innerHTML = getFahrenheit(temp.innerHTML);
-  });
-  forecastFahrenheitMin.forEach((temp) => {
-    temp.innerHTML = getFahrenheit(temp.innerHTML);
-  });
+  // forecastFahrenheitMax.forEach((temp) => {
+  //   temp.innerHTML = getFahrenheit(temp.innerHTML);
+  // });
+  // forecastFahrenheitMin.forEach((temp) => {
+  //   temp.innerHTML = getFahrenheit(temp.innerHTML);
+  // });
   degrees.innerHTML = getFahrenheit(celsiusTemperature);
 }
 let fahrenheit = document.querySelector("#fahrenheit");
